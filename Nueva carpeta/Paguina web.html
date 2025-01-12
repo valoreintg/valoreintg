@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Preguntas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            width: 50px; /* Ajusta el tamaño del logo */
+            margin-bottom: 15px; /* Espacio entre el logo y el texto */
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7e7e7;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Logo encima del texto -->
+        <img src="https://aulavirtual.donbosco.edu.ec/pluginfile.php/1/theme_moove/logo/1727296214/DBE-edit.png" alt="Logo.png" class="logo.png"> <!-- Aquí se coloca el logo -->
+        <h1>Pregunta algo</h1>
+        <input type="text" id="searchQuery" placeholder="Escribe tu pregunta aquí...">
+        <button onclick="getAnswer()">Buscar Respuesta</button>
+
+        <div class="response" id="responseArea"></div>
+    </div>
+
+    <script>
+        function getAnswer() {
+            const query = document.getElementById('searchQuery').value.toLowerCase();
+            let response = '';
+
+            // Respuestas predefinidas
+            const answers = {
+                '¿cómo estás?': 'Estoy bien, gracias por preguntar.',
+                '¿qué hora es?': 'Lo siento, no puedo decirte la hora.',
+                '¿quién eres?': 'Soy un asistente virtual creado para ayudarte.',
+                '¿qué es HTML?': 'HTML es el lenguaje de marcado utilizado para crear páginas web.'
+            };
+
+            if (answers[query]) {
+                response = answers[query];
+            } else {
+                response = 'Lo siento, no tengo una respuesta para esa pregunta.';
+            }
+
+            // Mostrar la respuesta
+            document.getElementById('responseArea').innerText = response;
+        }
+    </script>
+
+</body>
+</html>
